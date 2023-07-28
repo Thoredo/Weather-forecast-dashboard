@@ -26,6 +26,7 @@ try:
                     "Rain": "images/rain.png", "Snow": "images/snow.png"}
             sky_conditions = [dict["weather"][0]["main"] for dict in filtered_data]
             images_paths = [images[condition] for condition in sky_conditions]
-            st.image(images_paths, width=115)
+            image_label = [dict['dt_txt'] for dict in filtered_data]
+            st.image(images_paths, width=115, caption=image_label)
 except KeyError:
     st.text("Please enter a place that exists")
